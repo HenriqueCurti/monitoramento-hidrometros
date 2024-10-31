@@ -1,0 +1,41 @@
+/* src/index.css */
+
+/* Reset básico para margens e paddings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Ajuste para garantir que a altura mínima da página seja 100% da tela */
+html, body {
+  height: 100vdh;
+  font-family: "Open Sans", sans-serif;
+}
+
+/* Container principal para centralizar o conteúdo e aplicar responsividade */
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+/* Responsividade adicional para colunas */
+.ant-col {
+  display: flex;
+  justify-content: center;
+}
+
+/* Ajustes para o Card do Ant Design para prevenir overflow */
+.ant-card {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Melhorias gerais para botões em dispositivos móveis */
+
+/* Ajustes de responsividade para formulários */
+.ant-form-item {
+  width: 100%;
+}

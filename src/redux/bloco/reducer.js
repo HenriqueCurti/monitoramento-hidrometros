@@ -21,7 +21,8 @@ const initiaState = {
   //                 "numberOfUnits": 30,
   //                 "createdAt": "2024-09-03T15:04:28Z"
   //             }],
-  blocoList: await DataBase.getBloco(),
+  //blocoList: await DataBase.getBloco(),
+  blocoList: [],
   blocoUpdated: [],
 };
 

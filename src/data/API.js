@@ -1,24 +1,13 @@
 const API = {
-    url : "https://localhost/",
-    endpoint : {
-        login: "login",
-        user: {
-            getUser: "getUser",
-            setUser: "setUser"
-        },
-        bloco: {
-            getBloco: "getBloco",
-            setBloco: "setBloco",
-            deleteBloco: "deleteBloco",
-            updateBloco: "updateBloco"
-        },
-        leitura: {
-            getLeitura: "getLeitura",
-            setLeitura: "setLeitura",
-            deleteLeitura: "deleteLeitura",
-            updateLeitura: "updateLeitura"
-        },        
-    }
-}
+  url: "http://halrp.tplinkdns.com:8666/",
+  endpoint: {
+    login: "login",
+    user: "user",
+    bloco: "building",
+    leitura: "meterreading",
+    hidrometro: "watermeter",
+    addLeitura: "/createreading",
+  },
+};
 
 export default API;

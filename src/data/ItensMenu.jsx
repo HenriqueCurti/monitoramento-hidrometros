@@ -21,20 +21,25 @@ export const ItensMenu = [
   {
     key: '3',
     icon: <IoMdPersonAdd />,
-    label: <Link to="/register">Registro</Link>,
+    label: <Link to="/register">Usuários</Link>,
   },
   {
     key: '4',
     icon: <TbDeviceDesktopAnalytics /> ,
-    label: <Link to="/dashboard">Dashboard</Link>,
+    label: <Link to="/hidrometro">Hidrometros</Link>,
   },
   {
     key: '5',
+    icon: <TbDeviceDesktopAnalytics /> ,
+    label: <Link to="/dashboard">Dashboard</Link>,
+  },
+  {
+    key: '6',
     icon: <IoMdSettings />,
     label: "Tema",
   },
   {
-    key: '6',
+    key: '7',
     icon: <ImExit />,
     label: 'Sair'
   },

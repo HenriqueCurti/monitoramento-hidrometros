@@ -34,9 +34,9 @@ const AppSider = ({items}) => {
     }
 
     const handleClickMenu = (evento) => {
-        if(evento.key === '5'){
+        if(evento.key === '6'){
             handleChangeTheme();            
-        }else if(evento.key === '6'){
+        }else if(evento.key === '7'){
             Modal.confirm({
                 title: "Finalizar Sessão",
                 content: "Deseja realmente sair?",

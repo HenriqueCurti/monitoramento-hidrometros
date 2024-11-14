@@ -6,7 +6,11 @@ const RegisterPage = () => {
 
   const onFinish = (values) => {
     try {
-        console.log('Success:', values); 
+        const formattedValues = {...values, 
+          userRole : 1
+        }
+
+        console.log('Success:', formattedValues); 
 
         message.success({
             duration: 5,
@@ -30,21 +34,21 @@ const RegisterPage = () => {
             layout="vertical"            
           >
             <Form.Item
-              name="name"
+              name="username"
               rules={[{ required: true, message: 'Por favor, insira seu nome!' }]}
             >
               <Input placeholder="Nome" />
             </Form.Item>
 
             <Form.Item
-              name="email"
+              name="userEmail"
               rules={[{ required: true, message: 'Por favor, insira seu email!' }]}
             >
               <Input placeholder="Email" />
             </Form.Item>
 
             <Form.Item
-              name="password"
+              name="password_hash"
               rules={[{ required: true, message: 'Por favor, insira sua senha!' }]}
             >
               <Input.Password placeholder="Senha" />

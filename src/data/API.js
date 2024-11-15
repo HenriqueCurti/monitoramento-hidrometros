@@ -7,6 +7,7 @@ const API = {
     leitura: "meterreading",
     hidrometro: "watermeter",
     addLeitura: "/createreading",
+    deleteLeitura: "/deletereading",
   },
 };
 

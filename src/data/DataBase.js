@@ -97,7 +97,19 @@ class DataBase {
 
   // leituras
   async getLeitura(load) {
-    await fetch(`${API.url}${API.endpoint.leitura}`)
+    const username = "super_admin";
+    const password = "123456789";
+    const base64Credentials = btoa(`${username}:${password}`); // Codifica a string "super_admin:1
+
+    await fetch(`${API.url}${API.endpoint.leitura}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Basic ${base64Credentials}`,
+      },
+      method: "GET",
+      mode: "cors",
+      cache: "no-cache",
+    })
       .then((res) => res.json())
       .then((data) => {
         load(data);
@@ -133,16 +145,20 @@ class DataBase {
       .catch((err) => console.log(err));
   }
 
-  async deleteLeitura(data) {
-    await fetch(`${API.url}${API.endpoint.leitura}/${data.idLeitura}`, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-      method: "DELETE",
-      mode: "cors",
-      cache: "no-cache",
-    })
-      .then(this.getLeitura)
+  async deleteLeitura(idLeitura) {
+    await fetch(
+      `${API.url}${API.endpoint.leitura}${API.endpoint.deleteLeitura}/${idLeitura}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Basic " + "super_admin:123456789",
+        },
+        method: "DELETE",
+        mode: "cors",
+        cache: "no-cache",
+      }
+    )
+      .then((res) => console.log(res))
       .catch((err) => console.log(err));
   }
 

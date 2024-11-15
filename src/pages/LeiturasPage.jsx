@@ -21,38 +21,6 @@ import { useSelector, useDispatch } from "react-redux";
 import leituraActionTypes from "../redux/leitura/action-types";
 import DataBase from "../data/DataBase";
 
-const handleDelete = () => {
-  Modal.confirm({
-    title: "Exclusão",
-    content: "Deseja excluir o registro selecionado?",
-    okText: "Sim",
-    cancelText: "Não",
-    onOk: () => {
-      try {
-        message.success({
-          duration: 5,
-          content: "Registro excluído com sucesso!",
-        });
-      } catch (error) {
-        message.error({
-          duration: 5,
-          content: "Erro ao excluir o registro selecionado!",
-        });
-      }
-    },
-  });
-};
-
-const data = [];
-for (let i = 0; i < 100; i++) {
-  data.push({
-    key: i,
-    name: `Bloco ${i}`,
-    age: `Usuario ${i}`,
-    address: `111510245${i}`,
-    data: "15/09/2024 15:20",
-  });
-}
 const LeiturasPage = () => {
   const { leituraIsOpen } = useSelector(
     (rootReducer) => rootReducer.leituraReducer
@@ -151,7 +119,7 @@ const LeiturasPage = () => {
             focusable={true}
             style={{ cursor: "pointer" }}
             size={15}
-            onClick={handleDelete}
+            onClick={() => handleDelete(record.readingId)}
           />
         </Space>
       ),
@@ -159,6 +127,39 @@ const LeiturasPage = () => {
   ];
 
   const dispacth = useDispatch();
+
+  const handleDelete = (id) => {
+    Modal.confirm({
+      title: "Exclusão",
+      content: "Deseja excluir o registro selecionado?",
+      okText: "Sim",
+      cancelText: "Não",
+      onOk: () => {
+        starDelete(id);
+      },
+    });
+  };
+
+  const starDelete = async (id) => {
+    try {
+      //console.log(id);
+      await DataBase.deleteLeitura(id);
+
+      dispacth({
+        type: leituraActionTypes.UPDATELEITURA,
+        payload: id,
+      });
+      message.success({
+        duration: 5,
+        content: "Registro excluído com sucesso!",
+      });
+    } catch (error) {
+      message.error({
+        duration: 5,
+        content: "Erro ao excluir o registro selecionado!",
+      });
+    }
+  };
 
   const handleUpdate = (record) => {
     Modal.confirm({
@@ -192,6 +193,8 @@ const LeiturasPage = () => {
   };
 
   useEffect(() => {
+    console.log("atualizou as leituras");
+
     DataBase.getLeitura(load);
   }, [leituraUpdated]);
 

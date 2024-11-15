@@ -39,7 +39,7 @@ const LeituraForm = () => {
     });
   };
 
-  const onFinish = (values) => {
+  const onFinish = async (values) => {
     try {
       let data;
       if (!leituraUpdated.user) {
@@ -54,9 +54,12 @@ const LeituraForm = () => {
         };
       }
 
-      console.log(data);
+      await DataBase.setLeitura(data);
 
-      DataBase.setLeitura(data);
+      dispacth({
+        type: leituraActionTypes.UPDATELEITURA,
+        payload: data,
+      });
 
       handleCloseModal();
       console.log("Leitura lançada:", data);

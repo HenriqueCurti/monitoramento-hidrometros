@@ -3,7 +3,7 @@ import hidrometroActionTypes from "./action-types";
 const initiaState = {
   hidrometroIsOpen: false,
   //hidrometroList: [],
-  hidrometroList: await [
+  hidrometroList: [
     {
       id: 1,
       installationDate: null,

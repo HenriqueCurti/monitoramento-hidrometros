@@ -169,9 +169,9 @@ const HidrometroPage = () => {
     });
   };
 
-  useEffect(() => {
-    DataBase.getHidrometro(load);
-  }, [hidrometroUpdated]);
+  // useEffect(() => {
+  //   DataBase.getHidrometro(load);
+  // }, [hidrometroUpdated]);
 
   const dispacth = useDispatch();
 

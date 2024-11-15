@@ -60,9 +60,9 @@ const BlocosPage = () => {
     });
   };
 
-  useEffect(() => {
-    DataBase.getBloco(load);
-  }, [blocoUpdated]);
+  // useEffect(() => {
+  //   DataBase.getBloco(load);
+  // }, [blocoUpdated]);
 
   const dispacth = useDispatch();
 

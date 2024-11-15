@@ -97,19 +97,7 @@ class DataBase {
 
   // leituras
   async getLeitura(load) {
-    const username = "super_admin";
-    const password = "123456789";
-    const base64Credentials = btoa(`${username}:${password}`); // Codifica a string "super_admin:1
-
-    await fetch(`${API.url}${API.endpoint.leitura}`, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Basic ${base64Credentials}`,
-      },
-      method: "GET",
-      mode: "cors",
-      cache: "no-cache",
-    })
+    await fetch(`${API.url}${API.endpoint.leitura}`)
       .then((res) => res.json())
       .then((data) => {
         load(data);
@@ -151,7 +139,6 @@ class DataBase {
       {
         headers: {
           "Content-Type": "application/json",
-          Authorization: "Basic " + "super_admin:123456789",
         },
         method: "DELETE",
         mode: "cors",

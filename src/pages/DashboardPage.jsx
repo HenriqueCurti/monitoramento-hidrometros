@@ -1,7 +1,16 @@
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { Row, Col, Space } from 'antd';
-import { useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
+import { Row, Col, Space } from "antd";
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 
 // const data = [
 //   {
@@ -48,9 +57,10 @@ import { useEffect, useState } from 'react';
 //   },
 // ];
 
-const DashboardPage = () => {  
-   
-  const { leituraList } = useSelector(rootReducer => rootReducer.leituraReducer);
+const DashboardPage = () => {
+  const { leituraList } = useSelector(
+    (rootReducer) => rootReducer.leituraReducer
+  );
 
   const [data, setData] = useState([]);
 
@@ -67,7 +77,7 @@ const DashboardPage = () => {
 
   const organizedData = leituraList.reduce((acc, item) => {
     const { buildingName } = item.meter.building;
-    const existing = acc.find(d => d.name === item.readingDate);
+    const existing = acc.find((d) => d.name === item.readingDate);
     if (existing) {
       existing[buildingName] = item.readingValue;
     } else {
@@ -76,17 +86,14 @@ const DashboardPage = () => {
     return acc;
   }, []);
 
-  
+  // useEffect(() => {
+  //   setData(organizedData);
+  // }, [leituraList])
 
-  useEffect(() => {
-    setData(organizedData);
-  }, [leituraList])
-  
-
-    return (
-    //   <ResponsiveContainer width="100%" height="100%">      
-    <Row justify="space-around">      
-      <Col xs={24} sm={20} md={16} lg={10} xl={16}>  
+  return (
+    //   <ResponsiveContainer width="100%" height="100%">
+    <Row justify="space-around">
+      <Col xs={24} sm={20} md={16} lg={10} xl={16}>
         <LineChart
           width={800}
           height={490}
@@ -108,11 +115,10 @@ const DashboardPage = () => {
           <Line type="monotone" dataKey="Bloco A" stroke="#8884d8" />
           <Line type="monotone" dataKey="Bloco B" stroke="#82ca9d" />
         </LineChart>
-    
-      </Col>   
-    </Row> 
-      //   </ResponsiveContainer>
-    );  
-  }
+      </Col>
+    </Row>
+    //   </ResponsiveContainer>
+  );
+};
 
-export default DashboardPage
+export default DashboardPage;

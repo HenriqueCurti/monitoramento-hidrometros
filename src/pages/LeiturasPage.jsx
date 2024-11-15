@@ -192,11 +192,11 @@ const LeiturasPage = () => {
     });
   };
 
-  useEffect(() => {
-    console.log("atualizou as leituras");
+  // useEffect(() => {
+  //   console.log("atualizou as leituras");
 
-    DataBase.getLeitura(load);
-  }, [leituraUpdated]);
+  //   DataBase.getLeitura(load);
+  // }, [leituraUpdated]);
 
   const handleAdd = () => {
     dispacth({
